@@ -1,14 +1,12 @@
 :root {
-  font-size: 12px;
+  $baseHeight: 8px;
+  --base-height: #{$baseHeight};
+  --line-height: calc( #{$baseHeight} * 3);
+  --base-width: calc( #{$baseHeight} * 6);
+  --base-padding-xs: calc( #{$baseHeight} / 4);
+  --base-padding: calc( #{$baseHeight} *2);
+  --input-height: calc( #{$baseHeight} * 3);
+  --radius:  var(--input-height);
   
-  --base-width: 8px;
-  --width: 48px;
-  --height: calc(var(--width) / 2);
-  --radius: var(--height);
-  
-  --text-color: #333;
-  --bg-color: #eee;
-  --bg2-color: #ccc;
-  --shadow-color: #7d7d7db9;
-  --success-color: #139645;
+  font-size: calc(#{$baseHeight} * 1.5);
 }

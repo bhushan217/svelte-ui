@@ -2,6 +2,12 @@
   transition: .4s;
 }
 
+@mixin absolute ($top: 0, $right: 0){
+    position: absolute;
+    top: $top;
+    right: $right;
+}
+
 @mixin rect($width, $height, $radius: 0) {
   width: $width;
   height: $height;
