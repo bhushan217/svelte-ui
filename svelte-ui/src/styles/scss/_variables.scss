@@ -1,0 +1,14 @@
+:root {
+  font-size: 12px;
+  
+  --base-width: 8px;
+  --width: 48px;
+  --height: calc(var(--width) / 2);
+  --radius: var(--height);
+  
+  --text-color: #333;
+  --bg-color: #eee;
+  --bg2-color: #ccc;
+  --shadow-color: #7d7d7db9;
+  --success-color: #139645;
+}

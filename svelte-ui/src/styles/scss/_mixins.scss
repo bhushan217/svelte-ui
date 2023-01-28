@@ -1,0 +1,22 @@
+@mixin duration {
+  transition: .4s;
+}
+
+@mixin rect($width, $height, $radius: 0) {
+  width: $width;
+  height: $height;
+
+  @if $radius !=0 {
+    border-radius: $radius;
+  }
+
+}
+
+@mixin square($width, $radius: 0) {
+  @include rect($width, $width, $radius)
+}
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
