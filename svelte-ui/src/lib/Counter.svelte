@@ -5,6 +5,6 @@
   }
 </script>
 
-<button on:click={increment}>
+<button on:click={increment} data-tesetid="counter-component">
   count is {count}
 </button>

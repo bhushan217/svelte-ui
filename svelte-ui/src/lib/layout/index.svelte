@@ -11,7 +11,7 @@
 	const routes: Nav[] = [
     {
       path: '#1',
-      title: 'About',
+      title: 'ZAbout',
       types: ['top'],
     },
     {
@@ -19,6 +19,7 @@
       title: 'Toggle',
       component: Toggle,
       types: ['top','side'],
+			order: -1
     },
     {
       path: 'counter',
@@ -42,11 +43,11 @@
 	});
 </script>
 
-<div class="wrapper">
+<div class="wrapper" data-testid="home-page">
 	<Header />
 	<main class="page-main">
 		
-		<div class="card">
+		<div class="card" data-testid="toggle-component">
 			 <svelte:component this={routeComponent}/>
 		</div>
 	</main>

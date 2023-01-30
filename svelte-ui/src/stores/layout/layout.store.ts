@@ -7,18 +7,26 @@ export interface LayoutState {
   routes: Array<Nav>;
   currentNav?: Nav;
 }
-// const locationHashChanged = (event) => {  
-//   //console.trace("locationHashChanged location: " + document.location + ", state: " + JSON.stringify(event));
-// }
-// window.addEventListener('hashchange', locationHashChanged);
+const locationHashChanged = (event) => {  
+  console.trace("locationHashChanged location: " + document.location + ", state: " + JSON.stringify(event));
+}
+window.addEventListener('hashchange', locationHashChanged);
 
 const onpopstate = (event: PopStateEvent) => {
   // console.trace(event.state)
   if(event.state){
-    const newPath = '/'+event.state.url.toString().substring(BASE_PATH.length)
+    const nextUrl = event.state.nextUrl
+    const newPath = nextUrl.toString().substring(BASE_PATH.length)
     layoutStore.setRouteActive(newPath)
+  }
 }
+
+export const onWindowLoad = () => {
+  const nextUrl = window.location.href
+  const newPath = nextUrl.toString().substring(BASE_PATH.length)
+  layoutStore.setRouteActive(newPath)
 }
+
 
 window.addEventListener('popstate', onpopstate);
 
@@ -58,11 +66,11 @@ export const routerLink = (node: HTMLAnchorElement, nav: Nav) => {
   const routeNavClicked = (e: MouseEvent) => {
     e.preventDefault()
     layoutStore.setRouteActive(nav.path)
-    const url = location.origin+BASE_PATH+nav.path
+    const nextUrl = BASE_PATH+nav.path
     const currentUrl = window.location.href
-    const state = { currentUrl, url }
+    const state = { currentUrl, nextUrl }
     //console.trace({state, nav})
-    history.pushState(state, 'ABC', url)
+    history.pushState(state, 'ABC', nextUrl)
   };
   node.addEventListener('click', routeNavClicked);
 	return {

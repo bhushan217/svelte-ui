@@ -24,10 +24,9 @@
 	/>
 	<ul class="page-sidenav__container">
 		{#each $layoutStore.routes.filter(
-			(nav) => (
+			(nav) => (nav.types?.includes('side') && 
 				(!searchText || nav.title.toLowerCase().includes(searchText.toLowerCase()) )
-				 && nav.types?.includes('top')
-			)) as sideNav}
+			)).sort((n1, n2) => +n1.order - +n2.order || n1.path.toString().localeCompare(n2.path.toString())) as sideNav}
 			<li class:active={!!sideNav.active}>
 				<a  use:routerLink={sideNav}
 				 href={sideNav.path.toString()}>{sideNav.title}</a

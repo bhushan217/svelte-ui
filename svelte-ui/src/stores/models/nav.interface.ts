@@ -7,5 +7,6 @@ export interface Nav {
   active?: boolean;
   types?: SideType[];
   component?: ComponentType;
+  order?: number;
   children?: Nav[];
 }

@@ -18,10 +18,10 @@
 		</div>
 		<div class="topnav">
 			<ul class="topnav__container">
-				{#each $layoutStore.routes.filter(nav => nav.types?.includes('top')) as topNav}
+				{#each $layoutStore.routes.filter(nav => nav.types?.includes('top')).sort((n1, n2) => +n1.order - +n2.order || n1.path.toString().localeCompare(n2.path.toString())) as topNav}
 					<li class:active={!!topNav.active}>
 						<a use:routerLink={topNav} 
-						href={topNav.path.toString()}>{topNav.title}</a>
+						href={topNav.path.toString()}>{topNav.title}|{+topNav.order}</a>
 					</li>
 				{/each}
 			</ul>

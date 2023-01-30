@@ -5,7 +5,7 @@
 	 
 </script>
 
-<label class="field-label">
+<label class="field-label" data-testid="toggle-compnent">
 	{label} 
 	<input class="field-input" {checked} type="checkbox" />
 	<div class="toggle" />
