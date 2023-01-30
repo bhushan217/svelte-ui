@@ -1,10 +1,7 @@
 <script lang="ts">
-	import svelteLogo from '../../assets/svelte.svg';
-	import { layoutStore, type Nav } from '../../stores/layout/layout.store';
+	import svelteLogo from '../../assets/images/svelte.svg';
+	import { layoutStore, routerLink } from '../../stores/layout/layout.store';
 	export let searchText = '';
-	export const sideNavClicked = (sideNav: Nav) => {
-		layoutStore.setSideNavActive(sideNav.title);
-	};
 </script>
 
 <nav class="page-sidenav" class:hide={!!$layoutStore.isSideNavClosed}>
@@ -26,15 +23,14 @@
 		title="Type in a category"
 	/>
 	<ul class="page-sidenav__container">
-		{#each $layoutStore.sideNavs.filter((nav) => !searchText || nav.title
-					.toLowerCase()
-					.includes(searchText.toLowerCase())) as sideNav}
+		{#each $layoutStore.routes.filter(
+			(nav) => (
+				(!searchText || nav.title.toLowerCase().includes(searchText.toLowerCase()) )
+				 && nav.types?.includes('top')
+			)) as sideNav}
 			<li class:active={!!sideNav.active}>
-				<a
-					href={sideNav.path.toString()}
-					on:click={(e) => {
-						sideNavClicked(sideNav);
-					}}>{sideNav.title}</a
+				<a  use:routerLink={sideNav}
+				 href={sideNav.path.toString()}>{sideNav.title}</a
 				>
 			</li>
 		{/each}
@@ -106,7 +102,7 @@
 	}
 
 	@media screen and (max-width: 450px) {
-		.sidenav {
+		.page-sidenav {
 			padding-top: 15px;
 			a {
 				font-size: 18px;

@@ -1,10 +1,12 @@
 <script lang="ts">
+
 	export let label = '';
   export let checked = false;
+	 
 </script>
 
 <label class="field-label">
-	{label}
+	{label} 
 	<input class="field-input" {checked} type="checkbox" />
 	<div class="toggle" />
 </label>
