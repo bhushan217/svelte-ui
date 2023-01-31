@@ -2,14 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/svelte-ui/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/svelte-ui/images/icons/profile.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="app-title"></title>
+    <title id="app-title">B2k svelte-ui</title>
     <!-- <link rel="stylesheet" type="text/css" href="/src/styles/index.scss"> -->
-    <script type="module" crossorigin src="/svelte-ui/assets/index-044b41f4.js"></script>
-    <link rel="stylesheet" href="/svelte-ui/assets/index-08e63463.css">
-  </head>
+    
+    <link rel="manifest" href="/svelte-ui/manifest.json" />
+    <link rel="manifest" href="/app.webmanifest" crossorigin="use-credentials" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Svelte UI" />
+    <link rel="apple-touch-icon" href="/svelte-ui/images/icons/profile.svg" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js").then((reg) => {
+            console.log("Service worker registered.", reg);
+          });
+        });
+      }
+    </script>
+    <script type="module" crossorigin src="/svelte-ui/assets/index-b2cfa24c.js"></script>
+    <link rel="stylesheet" href="/svelte-ui/assets/index-6ce8f6a0.css">
+  <link rel="manifest" href="/svelte-ui/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/svelte-ui/registerSW.js"></script></head>
   <body>
+    <noscript>
+      <div>Oops! Javascript required here! Allow it and try again!</div>
+    </noscript>
     <div id="app"></div>
     
   </body>

@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/svelte-ui/sw.js', { scope: '/svelte-ui/' })})}
