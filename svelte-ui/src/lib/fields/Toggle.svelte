@@ -1,13 +1,17 @@
 <script lang="ts">
-
+	import {createEventDispatcher} from 'svelte'
 	export let label = '';
   export let checked = false;
-	 
+
+	const dispatcher = createEventDispatcher()
+	let cb;
+	const onChange = () => {
+		dispatcher('checked',checked)
+	} 
 </script>
 
-<label class="field-label" data-testid="toggle-compnent">
-	{label} 
-	<input class="field-input" {checked} type="checkbox" />
+<label class="field-label" data-testid="toggle-compnent">{label} 
+	<input bind:this={cb} class="field-input" {checked} type="checkbox" value="Y" on:change={onChange}/>
 	<div class="toggle" />
 </label>
 
@@ -25,7 +29,7 @@
   $shadowColor:  var(--shadow-color);
 
   .field-label{    
-    border-bottom: solid $padding  $textColor;
+    //border-bottom: solid $padding  $textColor;
     padding: $padding;
   }
 	.toggle {

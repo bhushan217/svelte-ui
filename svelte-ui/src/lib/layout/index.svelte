@@ -7,13 +7,9 @@
 	import Toggle from '../fields/Toggle.svelte';
 	import Counter from '../Counter.svelte';
 	import type { Nav } from '../../stores/models/nav.interface';
+	import Todos from '../pages/Todos.svelte';
 	let routeComponent = Pnf404
 	const routes: Nav[] = [
-    {
-      path: '#1',
-      title: 'ZAbout',
-      types: ['top'],
-    },
     {
       path: 'toggle',
       title: 'Toggle',
@@ -26,7 +22,20 @@
       title: 'Counter',
       component: Counter,
       types: ['top','side'],
+			order: 1
     },
+    {
+      path: '/todos',
+      title: 'Todos',
+			component: Todos,
+      types: ['top'],
+			order: 2
+    },
+		{
+			path:'#about',
+			title: 'About Us',
+			types:['side']
+		}
   ]
 	layoutStore.addRoutes(routes);
 	const unsubscribe = layoutStore.subscribe( state => {

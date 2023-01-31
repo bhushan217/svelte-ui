@@ -18,26 +18,26 @@
 		</div>
 		<div class="topnav">
 			<ul class="topnav__container">
-				{#each $layoutStore.routes.filter(nav => nav.types?.includes('top')).sort((n1, n2) => +n1.order - +n2.order || n1.path.toString().localeCompare(n2.path.toString())) as topNav}
+				{#each $layoutStore.routes.filter(nav => nav.types?.includes('top')) as topNav}
 					<li class:active={!!topNav.active}>
 						<a use:routerLink={topNav} 
-						href={topNav.path.toString()}>{topNav.title}|{+topNav.order}</a>
+						href={topNav.path.toString()}>{topNav.title}</a>
 					</li>
 				{/each}
 			</ul>
-			<div class="global-search">
-				<input class="search-input" />
-			</div>
-			<a href="./#T" class="button">T</a>
 		</div>
-		<div class="right-menu">
-      <div class="profile">&nbsp;</div>
-    </div>
+	</div>
+	<div class="right-menu">
+		<div class="global-search">
+			<input class="search-input" />
+		</div>
+		<a href="./#help" class="button">Help</a>
+		<div class="profile">&nbsp;</div>
 	</div>
 </header>
 
 <style lang="scss">
-	@use '../../styles/index.scss' as *;
+	//@use '../../styles/index.scss' as *;
 	:host {
 		--header-height: calc(var(--input-height) * 1);
 	}
@@ -47,9 +47,11 @@
 		box-shadow: 0 1px 2px var(--shadow-color);
 		max-height: var(--header-height);
 		overflow: hidden;
+		display: flex;
+		justify-content: space-between;
 		&__wrapper {
 			display: flex;
-			align-items: center;
+			// align-items: center;
 			.logo {
 				width: 100px;
 				text-align: left;
@@ -57,9 +59,9 @@
 			}
 			.topnav {
 				text-align: left;
-				flex-grow: 1;
+				//flex-grow: 1;
 				display: flex;
-				justify-content: space-between;
+				//justify-content: space-between;
 				&__container {
 					margin: 1em 0 auto 0;
 					li {
@@ -83,35 +85,73 @@
 						}
 					}
 				}
-				.global-search {
-					margin: auto;
-          input.search-input {
-            border: solid 1px transparent;
-            border-radius: var(--input-height);
-            padding: calc(var(--base-height));
-            outline: none;
-          }
+			}
+		}
+		.right-menu{		
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+			.global-search {
+				margin: auto;
+				flex-grow: 1;
+				input.search-input {
+					border: solid 1px transparent;
+					border-radius: var(--input-height);
+					padding: calc(var(--base-height));
+					outline: none;
 				}
 			}
-      .right-menu{
-          background-color: var(--tertiary);
-          border: solid 1px var(--text-color);
-          border-radius: 50%;
-          padding: 6px;
-        .profile{
-          background-color: var(--text-color);
-          width: 24px;
-          height: 24px;
-          cursor: pointer;
-          mask-size: cover;
-          -webkit-mask-size: cover;
-          mask-image: url({/src/assets/images/profile.svg}) no-repeat 100% 100%;
-          -webkit-mask-image: url(/src/assets/images/profile.svg);
-          &:hover{
-            background-color: var(--text-color);
-          }
-        }
-      }
+			.profile{
+				flex-grow: 1;
+				background-color: var(--tertiary);
+				border: solid 1px var(--text-color);
+				border-radius: 50%;
+				padding: 6px;			
+				background-color: var(--text-color);
+				width: 24px;
+				height: 24px;
+				cursor: pointer;
+				mask-size: cover;
+				-webkit-mask-size: cover;
+				mask-image: url({/src/assets/images/profile.svg}) no-repeat 100% 100%;
+				-webkit-mask-image: url(/src/assets/images/profile.svg);
+				&:hover{
+					background-color: var(--text-color);
+				}
+			}
+		}
+	}
+	
+	@media all and  (min-width: 960px) {
+		.page-header {
+			align-items: flex-start;
+			
+			.logo {
+        order: 0;
+    	}
+			.topnav {
+				order: 1;
+			}
+			.right-menu{
+				order: 2;
+			}
+		}
+	}
+	@media (max-width: 600px) {
+		.page-header {
+			align-items: center;
+			flex-direction: column;
+			.logo {
+        flex: 1;
+    	}
+			.topnav {
+				order: 1;
+				flex-grow: 1;
+			}
+			.right-menu{
+				order: 2;
+			}
 		}
 	}
 </style>

@@ -1,28 +1,17 @@
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({  
   base: '/svelte-ui/',
-  plugins: [svelte()],
-  // plugins: [svelte(), {
-  //   name: 'custom-css-name',
-  //   generateBundle(outputOptions, bundle) {
-  //     bundle['style.css'].fileName = 'bundle.css';
-  //     bundle['bundle.css'] = bundle['style.css']
-  //     delete bundle['style.css']
-
-  //   }
-  // }],
-  // build:{
-  //   lib: {
-  //     entry: 'src/App.svetle',
-  //     formats:['es'],
-  //     name: 'app',
-  //     fileName: () => 'bundle.js' //+ format
-  //   }
-  // }
-  // build:{
-  //   cssCodeSplit
-  // }
+  plugins: [
+    svelte(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true
+      }
+    })
+  ]
 })
