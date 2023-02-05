@@ -1,27 +1,30 @@
 <script lang="ts">
 	import svelteLogo from '../../assets/images/svelte.svg';
+	import { chatStore } from '../../stores/chat/chat.store';
 	import { layoutStore, routerLink } from '../../stores/layout/layout.store';
 	export let searchText = '';
-</script>
 
+	let inputField, messagesEl
+	const sendMessage = (e) => {
+		if(e.keyCode === 13){
+			const text = inputField.value
+			chatStore.sendMessage({text, email:'guest@dummy.in'})
+			messagesEl.scroll({
+				top: messagesEl.scrollHeight + messagesEl.clientHeight + 40,
+				behavior: 'instant'
+			})
+			inputField.value = ''
+		}
+	}
+</script>
 <nav class="page-sidenav" class:hide={!!$layoutStore.isSideNavClosed}>
 	<h2 class="logo">
-		<img
-			src={svelteLogo}
-			alt="B2K"
-			on:click={layoutStore.toggle}
-			on:keypress={layoutStore.toggle}
-		/>
+		<img src={svelteLogo} alt="B2K" on:click={layoutStore.toggle}
+			on:keypress={layoutStore.toggle}/>
 	</h2>
-
 	<button class="btn-close" on:click={layoutStore.toggle}>&times;</button>
-	<input
-		class="search-box"
-		type="text"
-		bind:value={searchText}
-		placeholder="Search.."
-		title="Type in a category"
-	/>
+	<input class="search-box" type="text" bind:value={searchText}
+		placeholder="Search.." title="Type in a category"/>
 	<ul class="page-sidenav__container">
 		{#each $layoutStore.routes.filter(
 			(nav) => (nav.types?.includes('side') && 
@@ -34,6 +37,16 @@
 			</li>
 		{/each}
 	</ul>
+	<div class="messanger">
+		<div class="messages" bind:this={messagesEl}>
+			{#each $chatStore.messages as message, i (i)}
+				<div class="message" class:active={!!message.text} class:me={i % 2 === 0}>
+					{message.text}
+				</div>
+			{/each}
+		</div>		
+		<div class="input-msg"><input type="text" on:keyup={sendMessage} bind:this={inputField} placeholder={$chatStore.isOffline ? 'Offline' : 'Enter Message'} /></div>
+	</div>
 </nav>
 
 <style lang="scss">
@@ -95,6 +108,58 @@
 				&.active,
 				&:hover {
 					border-left-color: var(--primary);
+				}
+			}
+		}
+		.messanger {			
+			//background-color: transparent;
+			border: 0;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			bottom: calc(var(--input-height) * 3);
+			left: 0;
+			width: 100%; /* or whatever */
+			.messages {
+				overflow: auto;  /* or hidden or auto */
+				max-height: 200px;
+				// margin-bottom: calc(var(--input-height) * 2);
+				.message{
+					background-color: var(--bg-color);
+					border-radius: 0 4px;
+					margin-bottom: 4px;
+					padding: 4px;
+					margin-right: var(--input-height);
+				}
+				.message.me{
+					background-color: var(--primary);
+					margin-left: var(--input-height);
+					margin-right: 0;
+				}
+				.message:last-child{
+					border-bottom: dashed 1px var(--shadow-color);
+				}
+				&::-webkit-scrollbar {
+					width: 4px;
+				}
+				&::-webkit-scrollbar-track {
+					background: var(--bg2-color);
+				}
+				&::-webkit-scrollbar-thumb {
+					background: var(--shadow-color);
+					cursor: pointer;
+				}
+				&::-webkit-scrollbar-thumb:hover {
+					background: var(--primary);
+				}
+			}
+			.input-msg{
+				input{
+					width: 95%;
+					height: var(--input-height);
+					outline: none;
+					border: 0;
+					border-bottom: solid 1px var(--shadow-color);
 				}
 			}
 		}

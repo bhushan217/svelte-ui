@@ -8,6 +8,7 @@
 	import Counter from '../Counter.svelte';
 	import type { Nav } from '../../stores/models/nav.interface';
 	import Todos from '../pages/Todos.svelte';
+	
 	let routeComponent = Pnf404
 	const routes: Nav[] = [
     {

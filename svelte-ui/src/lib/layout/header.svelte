@@ -95,10 +95,24 @@
 			.global-search {
 				margin: auto;
 				flex-grow: 1;
+				position: relative;
+				&::after {
+					content: "🔎";
+					font-family: Android!important;
+					position: absolute;
+					top: 0;
+					right: 0;
+					background-color: var(--bg-color);
+					border-radius: 0 var(--input-height) var(--input-height) 0;
+					padding: var(--base-height) calc(var(--input-height) / 6);
+					padding-left: 0;
+					box-shadow: 0px 1px #00000063;
+				}
 				input.search-input {
 					border: solid 1px transparent;
 					border-radius: var(--input-height);
 					padding: calc(var(--base-height));
+					padding-right: var(--input-height);
 					outline: none;
 				}
 			}

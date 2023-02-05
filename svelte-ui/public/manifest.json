@@ -1,0 +1,17 @@
+{
+  "name": "SVELTE-UI",
+  "short_name": "SVELTE-UI-PWA",
+  "description": "Progressive Web App developed using Svelte.",
+  "icons": [
+    {
+      "src": "/svelte-ui/images/icons/profile.svg",
+      "sizes": "144x144",
+      "type": "image/svg+xml"
+    }
+  ],
+  "id": "b2k-svelte-ui",
+  "start_url": "/svelte-ui/index.html",
+  "display": "standalone",
+  "background_color": "#242424",
+  "theme_color": "#0948ae"
+}
