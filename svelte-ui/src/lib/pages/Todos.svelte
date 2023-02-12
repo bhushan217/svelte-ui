@@ -1,7 +1,8 @@
 <script lang="ts">
 import {todoStore} from '../../stores/todo.store'
-import Toggle from '../fields/Toggle.svelte';
+import Modal from '../components/Modal.svelte';
 
+let showModal = false;
 let inputTodo;
 const addTodo =  (e) =>{ 
   const title = inputTodo.value?.trim() 
@@ -9,6 +10,18 @@ const addTodo =  (e) =>{
     todoStore.add(title)
     inputTodo.value = ''
   }
+}
+let currentTodo;
+const remove = (todo) => {
+  currentTodo = todo
+  showModal = true
+}
+const closeModal = () =>{
+  showModal = false
+}
+const removeTodo = () => {
+  todoStore.remove(currentTodo.id)
+  closeModal()
 }
 </script>
 
@@ -25,12 +38,27 @@ const addTodo =  (e) =>{
     </div>
     {#each $todoStore.todos.sort((a,b)=> a._cat - b._cat || a.title.toString().localeCompare(b.title)) as todo (todo.id)}
     <div class="todo-item">
-      <div class="action"><Toggle on:checked={(e)=> { e.detail || todoStore.remove(todo.id)}}></Toggle></div>
+      <div class="action">
+        <div class="btn btn-icon"
+          on:click={(e)=> { remove(todo)}}
+          on:keypress={(e)=> { remove(todo)}}>❌
+        </div>
+      </div>
       <div class="title">{todo.title}</div>
     </div>
     {/each}
   </div>
 </div>
+{#if showModal}
+	<Modal on:close="{closeModal}" type='warn' buttons = {[{label:'Ok', action: removeTodo, classes: ['btn-primary']}]}>
+		<h2 slot="header" class="bg-warn">
+			Warning
+		</h2>
+    <p>
+      Are you sure?
+    </p>
+	</Modal>
+{/if}
 
 <style lang="scss">
   .card{

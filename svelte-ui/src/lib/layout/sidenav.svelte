@@ -10,7 +10,7 @@
 			const text = inputField.value
 			chatStore.sendMessage({text, email:'guest@dummy.in'})
 			messagesEl.scroll({
-				top: messagesEl.scrollHeight + messagesEl.clientHeight + 40,
+				top: messagesEl.scrollHeight + messagesEl.clientHeight ,
 				behavior: 'instant'
 			})
 			inputField.value = ''
@@ -114,16 +114,14 @@
 		.messanger {			
 			//background-color: transparent;
 			border: 0;
-			margin: 0;
-			padding: 0;
 			position: absolute;
-			bottom: calc(var(--input-height) * 3);
+			bottom: 0;
 			left: 0;
 			width: 100%; /* or whatever */
 			.messages {
 				overflow: auto;  /* or hidden or auto */
 				max-height: 200px;
-				// margin-bottom: calc(var(--input-height) * 2);
+    		padding-bottom: var(--input-height);
 				.message{
 					background-color: var(--bg-color);
 					border-radius: 0 4px;
@@ -155,7 +153,7 @@
 			}
 			.input-msg{
 				input{
-					width: 95%;
+					width: 100%;
 					height: var(--input-height);
 					outline: none;
 					border: 0;
