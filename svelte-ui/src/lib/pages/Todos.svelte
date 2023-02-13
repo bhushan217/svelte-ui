@@ -62,6 +62,8 @@ const removeTodo = () => {
 
 <style lang="scss">
   .card{
+   --height: calc(var(--base-height, 8px) * 2);
+   --height2: calc(var(--base-height, 8px) * 3);
     width: 100%;
     height: 100%;
     background-color: var(--bg2-color, #121212);
@@ -75,15 +77,16 @@ const removeTodo = () => {
         flex: 1 0 content;
       }
       .date-time{
-        font-size: calc(var(--base-height, 8px) * 3);
+        font-size: var(--height2);
       }
-      .muted{
-        font-size: calc(var(--base-height, 8px) * 2);
+      .muted{      
+        font-size: var(--height2);  
         background-color: var(--success);
         border-radius: 50%;
-        width: calc(var(--base-height, 8px) * 2);
-        height: calc(var(--base-height, 8px) * 2);
+        width: var(--height2) ;
+        height: var(--height2) ;
         text-align: center;
+        line-height: var(--height2);
       }
     }
     .body{
@@ -96,11 +99,11 @@ const removeTodo = () => {
           flex: 1 0 content;
         }
         .form-field{
-          height: calc(var(--input-height, 24px) * 2);
+          height: var(--height2);
           width: 100%;
           border: 0;
           outline: none;
-          padding-left: var(--base-padding-xs, 2px) ;
+          padding-left: var(--base-padding, 2px) ;
         }
         .action{
           width: calc(var(--input-height, 16px) * 2);

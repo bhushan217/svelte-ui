@@ -17,10 +17,10 @@
 
 <style lang="scss">
 	@use '../../styles' as *;
-  $width:  calc(var(--base-width) - var(--base-padding-xs));
+  $width:  calc(var(--base-width) - var(--base-padding));
   $height:  var(--input-height);
-  $heightP: calc(var(--input-height) - var(--base-padding-xs));
-  $basePadding: var(--base-padding-xs);
+  $heightP: calc(var(--input-height) - var(--base-padding));
+  $basePadding: var(--base-padding);
   $padding:  calc(var(--base-padding-xs) /2);
 
   $textColor: var(--text-color);

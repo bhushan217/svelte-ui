@@ -9,7 +9,7 @@
 <header class="page-header">
 	<div class="page-header__wrapper">
 		<div class="logo">
-			<img
+			<img class="centered"
 				src={svelteLogo}
 				alt="Logo"
 				on:click={layoutStore.toggle}
@@ -54,8 +54,7 @@
 			// align-items: center;
 			.logo {
 				width: 100px;
-				text-align: left;
-				text-align: center;
+				position: relative;
 			}
 			.topnav {
 				text-align: left;
@@ -66,19 +65,21 @@
 					margin: 1em 0 auto 0;
 					li {
 						display: inline-block;
-						border: solid 2px transparent;
+						border: solid 1px transparent;
 						padding: 0;
+						margin-left: var(--base-padding);
 						a {
 							display: inline-block;
 							padding: calc(var(--base-height) * 2) var(--base-height) ;
-              //var(--base-height) var(--base-height) ;
-							text-decoration: none;
 							font-size: 1.2em;
 							color: var(--text-color);
-							transition: 0.3s;
+							transition: .3s;
 							&:hover {
                 text-shadow: 1px 0px 1px;
 							}
+						}
+						&:hover {
+							border-bottom: 1px solid var(--text-color);
 						}
 						&.active {
 							border-bottom-color: var(--secondary);

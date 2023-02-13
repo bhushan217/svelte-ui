@@ -6,7 +6,7 @@
   --tertiary: #56a7f3;
 
   --success: #139645;
-  --warn: #caaf19;
+  --warn: #d5b500;
   --danger: #bd2b17ea;
 
   --shadow-color: #8b8b8bb9;
@@ -19,7 +19,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --text-color: #efefef;
+    --text-color: #d4d4d4;
     --bg-color: #242424;
     --bg2-color: #121212;
   }
