@@ -18,11 +18,11 @@
 	}
 </script>
 <nav class="page-sidenav" class:hide={!!$layoutStore.isSideNavClosed}>
+	<button class="btn-close" on:click={layoutStore.toggle}>&times;</button>
 	<h2 class="logo">
-		<img src={svelteLogo} alt="B2K" on:click={layoutStore.toggle}
+		<img class="centered" src={svelteLogo} alt="B2K" on:click={layoutStore.toggle}
 			on:keypress={layoutStore.toggle}/>
 	</h2>
-	<button class="btn-close" on:click={layoutStore.toggle}>&times;</button>
 	<input class="search-box" type="text" bind:value={searchText}
 		placeholder="Search.." title="Type in a category"/>
 	<ul class="page-sidenav__container">
@@ -66,41 +66,42 @@
 		left: 0;
 		background-color: var(--bg2-color); /* Black*/
 		overflow-x: hidden; /* Disable horizontal scroll */
-		padding-top: 60px; /* Place content 60px from the top */
-		transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+		transition: .3s; /* 0.5 second transition effect to slide in the sidenav */
+		box-shadow: .5rem 5rem .5rem var(--shadow-color);
 		&.hide {
 			width: 0;
 		}
 		.logo {
-			@include absolute(0, calc(var(--input-height) * 5));
+			background-color: var(--tertiary);
+			position: relative;
+			height: 4rem;
+			margin-bottom: 2rem;
+			border: solid 1px transparent;
 		}
 		.btn-close {
 			@include absolute;
-			font-size: 3rem;
+			font-size: 2rem;
 			background-color: transparent;
 			border: 0;
+			z-index: 2;
+			padding: 0 0.5rem;
 		}
 		.search-box {
-			height: var(--input-height);
-			width: calc(var(--input-height) * 6);
-			border: 0;
-			border-bottom: solid 1px var(--shadow-color);
-			outline: none;
-			padding: 0 calc(var(--base-padding-xs) * 3);
-			margin-left: var(--base-padding-xs);
+			padding: 0;
 		}
 		&__container {
 			padding: var(--base-padding-xs);
 			li {
 				border: solid 2px transparent;
+				box-shadow: 0 1px 1px var(--shadow-color);
 				a {
-					padding: var(--base-height) var(--base-height) var(--base-height)
-						calc(var(--base-height) * 2);
+					padding: var(--base-height) var(--base-height) var(--base-height)	calc(var(--base-height) * 2);
 					text-decoration: none;
 					font-size: 1.2em;
-					color: #818181;
+					color: var(--text2-color);
 					display: block;
 					transition: 0.3s;
+    			min-width: 12rem;
 					&:hover {
 						color: var(--primary);
 					}
@@ -120,13 +121,14 @@
 			width: 100%; /* or whatever */
 			.messages {
 				overflow: auto;  /* or hidden or auto */
-				max-height: 200px;
+				max-height: 12rem;
+				min-width: 12rem;
     		padding-bottom: var(--input-height);
 				.message{
 					background-color: var(--bg-color);
-					border-radius: 0 4px;
-					margin-bottom: 4px;
-					padding: 4px;
+					border-radius: 0 .25rem;
+					margin-bottom: .25rem;
+					padding: .25rem;
 					margin-right: var(--input-height);
 				}
 				.message.me{
@@ -138,7 +140,7 @@
 					border-bottom: dashed 1px var(--shadow-color);
 				}
 				&::-webkit-scrollbar {
-					width: 4px;
+					width: .25rem;
 				}
 				&::-webkit-scrollbar-track {
 					background: var(--bg2-color);
@@ -151,23 +153,14 @@
 					background: var(--primary);
 				}
 			}
-			.input-msg{
-				input{
-					width: 100%;
-					height: var(--input-height);
-					outline: none;
-					border: 0;
-					border-bottom: solid 1px var(--shadow-color);
-				}
-			}
 		}
 	}
 
 	@media screen and (max-width: 450px) {
 		.page-sidenav {
-			padding-top: 15px;
+			padding-top: 2px;
 			a {
-				font-size: 18px;
+				font-size: .8rem;
 			}
 		}
 	}

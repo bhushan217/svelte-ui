@@ -17,7 +17,7 @@
 
 <style lang="scss">
 	@use '../../styles' as *;
-  $width:  calc(var(--base-width) - var(--base-padding));
+  $width:  calc(var(--input-height) * 1.8 - var(--base-padding));
   $height:  var(--input-height);
   $heightP: calc(var(--input-height) - var(--base-padding));
   $basePadding: var(--base-padding);
@@ -58,8 +58,9 @@
 		&:checked + .toggle {
 			background-color: $primary;
 			&::after {
-				transform: translateX(#{$heightP});
+				transform: translateX(#{calc($heightP * .8)});
 			  background-color: $bgColor;
+				transition: transform .3s ease;
 			}
 		}
 	}

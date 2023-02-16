@@ -27,7 +27,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="right-menu">
+	<div class="right-menu ml-auto ">
 		<div class="global-search">
 			<input class="search-input" />
 		</div>
@@ -58,31 +58,28 @@
 			}
 			.topnav {
 				text-align: left;
-				//flex-grow: 1;
 				display: flex;
-				//justify-content: space-between;
 				&__container {
-					margin: 1em 0 auto 0;
+					margin: 0 1rem;
 					li {
 						display: inline-block;
 						border: solid 1px transparent;
 						padding: 0;
 						margin-left: var(--base-padding);
 						a {
-							display: inline-block;
 							padding: calc(var(--base-height) * 2) var(--base-height) ;
 							font-size: 1.2em;
 							color: var(--text-color);
 							transition: .3s;
 							&:hover {
-                text-shadow: 1px 0px 1px;
+                text-shadow: 1px 0px 1px var(--bg2-color);
 							}
 						}
 						&:hover {
-							border-bottom: 1px solid var(--text-color);
+							border-bottom: solid 1px var(--text-color);
 						}
 						&.active {
-							border-bottom-color: var(--secondary);
+							border-bottom-color: var(--text2-color);
 						}
 					}
 				}
@@ -107,7 +104,6 @@
 					border-radius: 0 var(--input-height) var(--input-height) 0;
 					padding: var(--base-height) calc(var(--input-height) / 6);
 					padding-left: 0;
-					box-shadow: 0px 1px #00000063;
 				}
 				input.search-input {
 					border: solid 1px transparent;

@@ -1,17 +1,11 @@
+@use "sass:color";
 @import '../src/styles/index.scss';
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-*:focus {
-  outline: none!important;
-}
+
 :root {
   font-family: 'Open Sans',Inter,Avenir,Helvetica,Arial, sans-serif;
-  line-height: 16px;
   font-weight: 400;
-
+  line-height: 16px;  
+  
   color: var(--text-color);
   background-color: var(--bg-color);
 
@@ -30,52 +24,23 @@ body {
   max-width: 1280px;
   min-height: 100vh;
 }
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
 .clickable, a, button, .logo{
   cursor: pointer;
 }
 
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
-}
-
-.blurred {
-  background: var(--bg-color, #343434);
-}
-@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-  .blurred {
-    backdrop-filter: blur(5px);
-  }
-}
-@mixin centerer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+/// BUTTONS
 .btn{
   border: solid 1px transparent;
   cursor: pointer;
   padding: var(--base-height, 12px);
-  //min-width: var(--base-width);
   position: relative;
   display: inline-block;
+  &:hover{
+    box-shadow: 0 2px .25rem var(--shadow-color);
+  }
+  &:active {
+    box-shadow: 0 2px 0.5rem var(--shadow-color);
+  }
 }
 .btn-icon{
   min-width: calc(var(--base-height) * 4);
@@ -91,30 +56,16 @@ a {
 .btn-primary{
   border: solid 1px var(--primary) !important;
   background-color: var(--primary) !important;
-  &:hover{
-    box-shadow: 0 2px .5rem var(--shadow-color);
-  }
 }
 
-.bg-primary{
-  background-color: var(--primary) !important;
-}
-.bg-accent{
-  background-color: var(--accent) !important;
-}
-.bg-tertiary{
-  background-color: var(--tertiary) !important;
-}
-.bg-success{
-  background-color: var(--success) !important;
-}
-.bg-warn{
-  background-color: var(--warn) !important;
-}
-.bg-danger{
-  background-color: var(--danger) !important;
-}
-
-mt-1{
-  margin-top: var(--base-height);
+/// INPUT
+input, input[type="text"]{
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  padding: 0 var(--base-padding);
+  width: 100%;
+  height: var(--input-height);
+  outline: none;
+  border: 0;
+  border-bottom: solid 1px var(--border-color);
 }

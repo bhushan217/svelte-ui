@@ -5,7 +5,7 @@
   --base-width: calc( #{$baseHeight} * 6);
   --base-padding-xs: calc( #{$baseHeight} / 4);
   --base-padding: calc( #{$baseHeight} / 2);
-  --input-height: calc( #{$baseHeight} * 3);
+  --input-height: calc( #{$baseHeight} * 4);
   --radius:  var(--input-height);
   
   font-size: calc(#{$baseHeight} * 1.5);

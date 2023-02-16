@@ -1,0 +1,58 @@
+
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blurred {
+  background: var(--bg-color, #343434);
+}
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .blurred {
+    backdrop-filter: blur(5px);
+  }
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.shadow:hover{
+  box-shadow: 1px 0px .5rem var(--text2-color);
+}
+
+.bg-primary{
+  background-color: var(--primary) !important;
+}
+.bg-accent{
+  background-color: var(--accent) !important;
+}
+.bg-tertiary{
+  background-color: var(--tertiary) !important;
+}
+.bg-success{
+  background-color: var(--success) !important;
+}
+.bg-warn{
+  background-color: var(--warn) !important;
+}
+.bg-danger{
+  background-color: var(--danger) !important;
+}
+
+.mt-1{
+  margin-top: var(--base-height);
+}
+.ml-auto {
+  margin-left: auto!important;
+}
+.mr-auto {
+  margin-right: auto!important;
+}
+
