@@ -67,5 +67,22 @@ input, input[type="text"]{
   height: var(--input-height);
   outline: none;
   border: 0;
+  border-radius: var(--base-height);
   border-bottom: solid 1px var(--border-color);
+  //border-left: solid 1px transparent;
+}
+input.valid,
+input[type=text].valid,
+input[type=email].valid,
+input[type=tel].valid,
+textarea.valid{
+  border-bottom-color: var(--success) !important;
+}
+input.error,
+input[type=text].error,
+input[type=email].error,
+input[type=tel].error,
+textarea.error{
+  border-bottom-color: var(--danger) !important;
+  //color: var(--danger) !important;
 }

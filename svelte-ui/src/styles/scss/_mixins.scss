@@ -2,10 +2,29 @@
   transition: .4s;
 }
 
-@mixin absolute ($top: 0, $right: 0){
+@mixin hover {
+  &:not([disabled]):hover {
+    @content;
+  }
+}
+
+@mixin absolute ($dir: 'lt', $x: 0, $y: 0){
     position: absolute;
-    top: $top;
-    right: $right;
+    @if $dir == 'lt' {
+      left: $x;
+      top: $y;
+    } @else if $dir == 'lb' {
+      left: $x;
+      bottom: $y;
+    } @else if $dir == 'rt' {
+      right: $x;
+      bottom: $y;
+    } @else if $dir == 'rb' {
+      right: $x;
+      bottom: $y;
+    } @else {
+      @error "Unknown direction #{$dir}.";
+    }
 }
 
 @mixin rect($width, $height, $radius: 0) {

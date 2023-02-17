@@ -8,6 +8,7 @@
 	import Counter from '../Counter.svelte';
 	import type { Nav } from '../../stores/models/nav.interface';
 	import Todos from '../pages/Todos.svelte';
+	import Page from '../pages/Page.svelte';
 	
 	let routeComponent = Pnf404
 	const routes: Nav[] = [
@@ -26,7 +27,7 @@
 			order: 1
     },
     {
-      path: '/todos',
+      path: 'todos',
       title: 'Todos',
 			component: Todos,
       types: ['top'],
@@ -36,6 +37,12 @@
 			path:'#about',
 			title: 'About Us',
 			types:['side']
+		},
+		{
+			path:'form',
+			title: 'Form',
+      component: Page,
+			types:['top', 'side']
 		}
   ]
 	layoutStore.addRoutes(routes);

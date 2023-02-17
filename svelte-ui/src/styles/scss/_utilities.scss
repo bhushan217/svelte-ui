@@ -6,6 +6,10 @@
   transform: translate(-50%, -50%);
 }
 
+@mixin tranzision {
+  transition: all .3s cubic-bezier(.78, .14, .15, .86);
+}
+
 .blurred {
   background: var(--bg-color, #343434);
 }
@@ -22,6 +26,8 @@
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
 }
+
+
 
 .shadow:hover{
   box-shadow: 1px 0px .5rem var(--text2-color);

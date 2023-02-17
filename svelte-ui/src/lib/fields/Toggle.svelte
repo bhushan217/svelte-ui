@@ -42,13 +42,10 @@
 
 		&::after {
 			content: ' ';
-			position: absolute;
-			left: $padding;
-			top: $padding;
-			right: $padding;
-			bottom: $padding;
-			@include square($heightP, $heightP);
+			@include absolute('lt', $padding, $padding);
 			background-color: $textColor;
+			@include square($heightP, $heightP);
+			@include tranzision
 		}
 	}
 
@@ -56,11 +53,10 @@
 		display: none;
 
 		&:checked + .toggle {
-			background-color: $primary;
+			background-color: var(--success);
 			&::after {
 				transform: translateX(#{calc($heightP * .8)});
 			  background-color: $bgColor;
-				transition: transform .3s ease;
 			}
 		}
 	}
