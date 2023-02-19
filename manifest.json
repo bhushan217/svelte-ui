@@ -4,7 +4,7 @@
   "description": "Progressive Web App developed using Svelte.",
   "icons": [
     {
-      "src": "/svelte-ui/images/icons/profile.svg",
+      "src": "/svelte-ui/images/icons/logo.svg",
       "sizes": "144x144",
       "type": "image/svg+xml"
     }

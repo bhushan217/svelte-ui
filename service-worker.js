@@ -10,7 +10,7 @@ const FILES_TO_CACHE = [
   BASE_URI+'/index.html',
   BASE_URI+'/index.js',
   BASE_URI+'/images/icons/svelte.svg',
-  BASE_URI+'/images/icons/profile.svg',
+  BASE_URI+'/images/icons/logo.svg',
 ];
 
 self.addEventListener('install', (evt) => {
