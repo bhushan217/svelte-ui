@@ -1,5 +1,5 @@
 <script lang="ts">
-	import svelteLogo from '../../assets/images/svelte.svg';
+	import b2kLogo from '../../../public/images/icons/logo.svg';
 	import { layoutStore, routerLink } from '../../stores/layout/layout.store';
 	import Sidenav from './sidenav.svelte';
 
@@ -9,9 +9,8 @@
 <header class="page-header">
 	<div class="page-header__wrapper">
 		<div class="logo">
-			<img class="centered"
-				src={svelteLogo}
-				alt="Logo"
+			<img class="centered" src={b2kLogo} alt="Logo" 
+				width="48px" height="48px"
 				on:click={layoutStore.toggle}
 				on:keypress={layoutStore.toggle}
 			/>
@@ -125,8 +124,8 @@
 				cursor: pointer;
 				mask-size: cover;
 				-webkit-mask-size: cover;
-				mask-image: url({/src/assets/images/profile.svg}) no-repeat 100% 100%;
-				-webkit-mask-image: url(/src/assets/images/profile.svg);
+				mask-image: url('./images/icon/profile.svg') no-repeat 100% 100%;
+				-webkit-mask-image: url('./images/icon/profile.svg');
 				&:hover{
 					background-color: var(--text-color);
 				}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import svelteLogo from '../../assets/images/svelte.svg';
+	import b2kLogo from '../../../public/images/icons/logo.svg';
 	import { chatStore } from '../../stores/chat/chat.store';
 	import { layoutStore, routerLink } from '../../stores/layout/layout.store';
 	export let searchText = '';
@@ -18,10 +18,12 @@
 	}
 </script>
 <nav class="page-sidenav" class:hide={!!$layoutStore.isSideNavClosed}>
-	<button class="btn-close" on:click={layoutStore.toggle}>&times;</button>
+	<button class="btn-close ml-auto" 
+	on:click={layoutStore.toggle}>&times;</button>
 	<h2 class="logo">
-		<img class="centered" src={svelteLogo} alt="B2K" on:click={layoutStore.toggle}
-			on:keypress={layoutStore.toggle}/>
+		<img class="mr-auto" src={b2kLogo} width="48px" alt="B2K" 
+		on:click={layoutStore.toggle}
+		on:keypress={layoutStore.toggle}/>
 	</h2>
 	<input class="search-box" type="text" bind:value={searchText}
 		placeholder="Search.." title="Type in a category"/>
@@ -79,7 +81,7 @@
 			border: solid 1px transparent;
 		}
 		.btn-close {
-			@include absolute;
+			@include absolute('rt');
 			font-size: 2rem;
 			background-color: transparent;
 			border: 0;

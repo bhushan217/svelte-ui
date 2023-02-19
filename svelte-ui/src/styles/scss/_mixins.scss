@@ -18,7 +18,7 @@
       bottom: $y;
     } @else if $dir == 'rt' {
       right: $x;
-      bottom: $y;
+      top: $y;
     } @else if $dir == 'rb' {
       right: $x;
       bottom: $y;
