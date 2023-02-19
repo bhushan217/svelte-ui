@@ -45,7 +45,7 @@
 			@include absolute('lt', $padding, $padding);
 			background-color: $textColor;
 			@include square($heightP, $heightP);
-			@include tranzision
+			@include tranzition
 		}
 	}
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import b2kLogo from '../../../public/images/icons/logo.svg';
+	import b2kLogo from '../../assets/images/icons/logo.svg';
 	import { chatStore } from '../../stores/chat/chat.store';
 	import { layoutStore, routerLink } from '../../stores/layout/layout.store';
 	export let searchText = '';

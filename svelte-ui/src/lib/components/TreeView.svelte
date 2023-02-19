@@ -60,7 +60,7 @@
         border-width: 2px 2px 0 0;
         border-color: var(--primary, #888);
         transform: rotate(45deg);
-        @include tranzision;
+        @include tranzition;
       }
       &.has-child.arrowDown:before {
         transform: rotate(135deg);

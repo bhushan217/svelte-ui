@@ -45,3 +45,14 @@
   padding: 0;
   list-style: none;
 }
+
+@mixin centerd {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin tranzition {
+  transition: all .3s ease-in ease-out;//cubic-bezier(.78, .14, .15, .86);
+}

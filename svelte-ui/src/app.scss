@@ -30,11 +30,14 @@ body {
 
 /// BUTTONS
 .btn{
-  border: solid 1px transparent;
-  cursor: pointer;
-  padding: var(--base-height, 12px);
   position: relative;
+  cursor: pointer;
+  border: solid 1px transparent;
+  border-radius: var(--base-padding);
+  padding: var(--base-height);
   display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
   &:hover{
     box-shadow: 0 2px .25rem var(--shadow-color);
   }
@@ -56,6 +59,11 @@ body {
 .btn-primary{
   border: solid 1px var(--primary) !important;
   background-color: var(--primary) !important;
+}
+.btn-default{
+  border: solid 1px var(--border-color) !important;
+  background-color: var(--bg-color) !important;
+  color: var(--text-color)
 }
 
 /// INPUT

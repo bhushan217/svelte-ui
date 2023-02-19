@@ -5,7 +5,7 @@ import Modal from '../components/Modal.svelte';
 let showModal = false;
 let inputTodo;
 const addTodo =  (e) =>{ 
-  const title = inputTodo.value?.trim() 
+  const title = inputTodo.value?.trim()
   if(e.keyCode === 13 && title){
     todoStore.add(title)
     inputTodo.value = ''
@@ -23,6 +23,18 @@ const removeTodo = () => {
   todoStore.remove(currentTodo.id)
   closeModal()
 }
+const actionButtons = [
+  {
+    label:'Ok',
+    action: removeTodo,
+    classes: ['btn-primary']
+  },
+  {
+    label:'Cancel',
+    action: () => {},
+    classes: ['btn-default']
+  },
+];
 </script>
 
 
@@ -50,7 +62,7 @@ const removeTodo = () => {
   </div>
 </div>
 {#if showModal}
-	<Modal on:close="{closeModal}" type='warn' buttons = {[{label:'Ok', action: removeTodo, classes: ['btn-primary']}]}>
+	<Modal on:close="{closeModal}" type='warn' buttons = {actionButtons}>
 		<h2 slot="header" class="bg-warn">
 			Warning
 		</h2>
@@ -66,10 +78,10 @@ const removeTodo = () => {
    --height2: calc(var(--base-height, 8px) * 3);
     width: 100%;
     height: 100%;
-    background-color: var(--bg2-color, #121212);
+    background-color: var(--bg2-color);
     .header {
       height: calc(var(--input-height)*3);
-      background-color: var(--bg-color, #343434);
+      background-color: var(--bg-color);
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -94,7 +106,7 @@ const removeTodo = () => {
         display: flex;
         align-items: center;
         justify-content: center;
-        border-bottom: solid 1px var(--shadow-color, #343434);
+        border-bottom: solid 1px var(--border-color);
         div{
           flex: 1 0 content;
         }
@@ -102,10 +114,10 @@ const removeTodo = () => {
           border: 0;
         }
         .action {
-          width: calc(var(--input-height, 16px) * 2);
+          width: calc(var(--input-height) * 2);
         }
         .title {
-          color: var(--text-color, #dfdfdf)
+          color: var(--text-color)
         }
       }
     }

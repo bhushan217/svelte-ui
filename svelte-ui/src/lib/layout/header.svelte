@@ -1,5 +1,5 @@
 <script lang="ts">
-	import b2kLogo from '../../../public/images/icons/logo.svg';
+	import b2kLogo from '../../assets/images/icons/logo.svg';
 	import { layoutStore, routerLink } from '../../stores/layout/layout.store';
 	import Sidenav from './sidenav.svelte';
 
@@ -36,7 +36,7 @@
 </header>
 
 <style lang="scss">
-	//@use '../../styles/index.scss' as *;
+	@use '../../styles/index.scss' as *;
 	:host {
 		--header-height: calc(var(--input-height) * 1);
 	}
@@ -62,20 +62,20 @@
 					margin: 0 1rem;
 					li {
 						display: inline-block;
-						border: solid 1px transparent;
+						border: solid 2px transparent;
 						padding: 0;
 						margin-left: var(--base-padding);
 						a {
 							padding: calc(var(--base-height) * 2) var(--base-height) ;
 							font-size: 1.2em;
 							color: var(--text-color);
-							transition: .3s;
+							@include tranzition;
 							&:hover {
                 text-shadow: 1px 0px 1px var(--bg2-color);
 							}
 						}
 						&:hover {
-							border-bottom: solid 1px var(--text-color);
+							border-bottom: solid 2px var(--text-color);
 						}
 						&.active {
 							border-bottom-color: var(--text2-color);

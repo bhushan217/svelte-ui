@@ -47,72 +47,70 @@ if (previously_focused) {
 
 <svelte:window on:keydown={handle_keydown}/>
 
-<div class="modal-background blurred" on:click={close}  on:keypress={close} ></div>
-
-<div class="modal" role="dialog" aria-modal="true" bind:this={modal}>
-	<button class="btn btn-close btn-round"  on:click={close} aria-label="Close Modal">x</button>
-	<div class="modal-header bg-{type}">
-		<slot name="header"></slot>
+<div class="modal-background blurred" on:click={close}  on:keypress={close} >
+	<div class="modal" role="dialog" aria-modal="true" bind:this={modal}>
+		<div class="modal-header bg-{type}">
+			<slot name="header"></slot>
+			<button class="btn btn-close btn-round"  on:click={close} aria-label="Close Modal">x</button>		
+		</div>
+		<div class="modal-body">
+			<slot></slot>
+		</div>
+		<div class="modal-footer">
+			{#each buttons as button (button.label)}
+				<button class="btn {button.classes?.join(' ') ?? ''} ml-auto"  on:click={(e)=>handleAction(button)} on:keypress={(e)=>handleAction(button)}>{button.label}</button>
+			{/each}
+		</div>
 	</div>
-	<div class="modal-body">
-		<slot></slot>
-	</div>
-  <div class="modal-footer">
-    {#each buttons as button (button.label)}
-      <button class="btn {button.classes?.join(' ') ?? ''}"  on:click={(e)=>handleAction(button)} on:keypress={(e)=>handleAction(button)}>{button.label}</button>
-    {/each}
-  </div>
 </div>
-
 <style lang="scss">
+	@use '../../styles/index.scss' as *;
 	.modal-background {
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(255, 255, 255, 0.1);
-	}
-
-	.modal {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		width: calc(100vw - 4rem);
-		max-width: 32rem;
-		max-height: calc(100vh - 4rem);
-		overflow: auto;
-		transform: translate(-50%,-50%);
-		border-radius: 0.2rem;
-		background: var(--bg-color, #343434);
-		.modal-header {
-			padding: 1rem;
-			border: 1px solid transparent;
-			border-bottom: solid 1px var(--shadow-color, #888888);
-		}
-		.modal-body {
-			padding: 1rem;
-		}
-		.modal-footer {
-			padding: 1rem;
-			border: 1px solid transparent;
-			border-top: solid 1px var(--shadow-color, #888888);
-			.btn{
-				float: right;
+		@include square(100%);
+		// width: 100%;
+		// height: 100%;
+		background:  var(--blur-bg);
+		.modal {
+			@extend .centered;
+			width: calc(100vw - 4rem);
+			max-width: 32rem;
+			max-height: calc(100vh - 4rem);
+			border-radius: 0.2rem;
+			background: var(--bg-color);
+			box-shadow: 0 2px .25rem var(--shadow-color);
+			@include tranzition;
+			.modal-header {
+				padding: 1rem;
+				border: 1px solid transparent;
+				border-bottom: solid 1px var(--shadow-color);
+				.btn-close {
+					@include absolute('rt', var(--base-height), var(--base-height));
+					@include square(calc(var(--base-height) * 3));
+					background: var(--bg2-color);
+					color: var(--text-color);
+					margin-left: var(--base-height);
+				}
+			}
+			.modal-body {
+				padding: 1rem;
+			}
+			.modal-footer {
+				padding: .5rem;
+				border: 1px solid transparent;
+				border-top: solid 1px var(--shadow-color);
+				display: flex;
+				flex-flow: row nowrap;
+				.btn {
+					padding: .5rem !important;
+					margin: 0 var(--base-height);
+					flex: 1;
+				}
 			}
 		}
 	}
 
-	.btn-close {
-		background: var(--bg-color, #343434);
-		display: block;
-		position: absolute;
-		top: var(--base-height);
-		right: var(--base-height);
-		width: calc(var(--base-height) * 3);
-		height: calc(var(--base-height) * 3);
-    line-height: var(--line-height);
-		border: 0;
-		padding: 0;
-	}
+
 </style>
