@@ -89,8 +89,6 @@
 		justify-content: center;
 		flex-grow: 1;
 		min-height: 350px;
-		background-color: var(--main-purple-color);
-		background-blend-mode: luminosity;
 		color: var(--main-white-color);
 	}
 

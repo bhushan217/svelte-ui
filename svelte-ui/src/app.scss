@@ -10,6 +10,7 @@
   background-color: var(--bg-color);
 
   font-synthesis: none;
+  font-variant: small-caps slashed-zero;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -46,12 +47,12 @@ body {
   }
 }
 .btn-icon{
-  min-width: calc(var(--base-height) * 4);
-  min-height: calc(var(--base-height) * 4);
+  min-width: 2rem;
+  min-height: 2rem;
   vertical-align: middle;
 }
 .btn-round{
-  border-radius: var(--input-height);
+  border-radius: 2rem;
 }
 .btn-circle{
   border-radius: 50%;
@@ -70,13 +71,13 @@ body {
 input, input[type="text"]{
   background-color: var(--input-bg);
   color: var(--text-color);
-  padding: 0 var(--base-padding);
+  padding: 0 var(--base-height);
   width: 100%;
   height: var(--input-height);
   outline: none;
-  border: 0;
+  border: 1px solid transparent;
   border-radius: var(--base-height);
-  border-bottom: solid 1px var(--border-color);
+  border-left: solid 1px var(--border-color);
   //border-left: solid 1px transparent;
 }
 input.valid,
@@ -84,13 +85,49 @@ input[type=text].valid,
 input[type=email].valid,
 input[type=tel].valid,
 textarea.valid{
-  border-bottom-color: var(--success) !important;
+  //border-bottom-color: var(--success) !important;
 }
 input.error,
 input[type=text].error,
 input[type=email].error,
 input[type=tel].error,
 textarea.error{
-  border-bottom-color: var(--danger) !important;
+  //border-bottom-color: var(--danger) !important;
   //color: var(--danger) !important;
+  position: relative;
+  display: block;
+}
+.form-group{
+  position: relative;
+  .form-control{
+    &.error{
+      border-left-color: var(--danger) !important;
+    }
+    &.valid{
+      border-left-color: var(--success) !important;
+    }
+  }
+  &:before{
+    content: ' ';
+    z-index: 1;
+    display: block;
+    color: var(--danger);
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    @include square(1.5rem);
+    background-size: cover;
+    background-color: transparent;
+    background-repeat: no-repeat;
+
+  }
+  &:has(.form-control.error):before{
+    @include svgIcon('warning-view');
+    animation: shake 2s cubic-bezier(.36,.07,.19,.97) both;  
+  }
+  &:has(.form-control.valid):before{
+    border-radius: 50%;
+    @include svgIcon('circle-tick-view');
+    animation: glowing 2s cubic-bezier(.36,.07,.19,.97) both; 
+  }
 }

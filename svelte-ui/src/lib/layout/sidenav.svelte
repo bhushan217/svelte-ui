@@ -1,7 +1,8 @@
 <script lang="ts">
 	import b2kLogo from '../../assets/images/icons/logo.svg';
 	import { chatStore } from '../../stores/chat/chat.store';
-	import { layoutStore, routerLink } from '../../stores/layout/layout.store';
+	import { layoutStore, routerLink, toggleDarkMode } from '../../stores/layout/layout.store';
+	import Toggle from '../fields/Toggle.svelte';
 	export let searchText = '';
 
 	let inputField, messagesEl
@@ -20,11 +21,14 @@
 <nav class="page-sidenav" class:hide={!!$layoutStore.isSideNavClosed}>
 	<button class="btn-close ml-auto" 
 	on:click={layoutStore.toggle}>&times;</button>
-	<h2 class="logo">
+	<div class="logo">
 		<img class="mr-auto" src={b2kLogo} width="48px" alt="B2K" 
 		on:click={layoutStore.toggle}
 		on:keypress={layoutStore.toggle}/>
-	</h2>
+	</div>
+	<div class="theme-switcher">
+		<Toggle on:checked={toggleDarkMode}  />
+	</div>
 	<input class="search-box" type="text" bind:value={searchText}
 		placeholder="Search.." title="Type in a category"/>
 	<ul class="page-sidenav__container">
@@ -88,8 +92,11 @@
 			z-index: 2;
 			padding: 0 0.5rem;
 		}
+		.theme-switcher{
+			@include absolute('rt', var(--input-height), calc(var(--base-height) * -1));			
+		}
 		.search-box {
-			padding: 0;
+			//padding: 0 var(--base-height);
 		}
 		&__container {
 			padding: var(--base-padding-xs);

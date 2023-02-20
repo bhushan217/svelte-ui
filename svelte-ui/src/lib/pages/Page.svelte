@@ -1,6 +1,7 @@
 <script>
 	import MaskedInput from '../fields/MaskedInput.svelte';
-	let phone = '';
+	let phone = '+91-900-412-3456';
+	let creditCard = '';
 
   import TreeView from '../components/TreeView.svelte'
 
@@ -45,10 +46,21 @@
   <label class="field-label" for="masked-phone">
     Phone
   </label>
-    <MaskedInput required={true} id="masked-phone" mask="+99-999-999-9999" bind:value={phone}
+    <MaskedInput required={true} disabled={false} id="masked-phone" mask="+##-###-###-####" bind:value={phone}
     />
   <div class="description">
     phone = {phone}
+  </div>
+</div>
+<div class="form-group">  
+  <label class="field-label" for="masked-creditCard">
+    Credit Card
+  </label>
+    <MaskedInput required={true} disabled={true} id="masked-creditCard"
+     mask="####-####-####" bind:value={creditCard}
+    />
+  <div class="description">
+    CC = {creditCard}
   </div>
 </div>
 
@@ -63,7 +75,7 @@
     border-bottom: solid 1px var(--shadow-color);
     @extend .shadow !optional;
     .description{
-      
+      font-size: .7em;
     }
   }
 </style>

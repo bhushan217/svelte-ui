@@ -5,9 +5,11 @@
   export let mask;
   export let value;
   export let required = false
+  export let disabled = false
   let textbox;
   $: isRequired = !!textbox?.hasAttribute('required')
   $: isValid = mask.length === value.length
+  $: cssClass = isRequired && !disabled ? isValid ? 'valid' : 'error invalid' : '';
   const maskValue = (value) => {
     let masked = ''
     let i = makeDigiter(value);
@@ -15,7 +17,7 @@
       return masked;
     }
     for (const m of mask) {
-      if (m === '9' && i.next()) {
+      if (m === '#' && i.next()) {
         // consume digit
         masked += i.value;
       } else if (i.more) {
@@ -126,5 +128,5 @@
  </script>
  
  <input autocomplete="off" {id} bind:this={textbox} type="text" maxLength={mask.length} on:input={handleInput}
-  placeholder={mask} value={value} {required}
-  class="form-control {isRequired ? isValid ? 'valid' : 'error' : ''}"/>
+  placeholder={mask} value={value} {required} {disabled} {cssClass}
+  class="form-control {cssClass}"/>

@@ -2,6 +2,7 @@
 	import {createEventDispatcher} from 'svelte'
 	export let label = '';
   export let checked = false;
+  export let disabled = false;
 
 	const dispatcher = createEventDispatcher()
 	let cb;
@@ -11,17 +12,17 @@
 </script>
 
 <label class="field-label" data-testid="toggle-compnent">{label} 
-	<input bind:this={cb} class="field-input" {checked} type="checkbox" value="Y" on:change={onChange}/>
+	<input bind:this={cb} class="field-input" {checked} type="checkbox" {disabled} value="Y" on:change={onChange}/>
 	<div class="toggle" />
 </label>
 
 <style lang="scss">
 	@use '../../styles' as *;
-  $width:  calc(var(--input-height) * 1.8 - var(--base-padding));
+  $width:  calc(var(--input-height) * 2 - var(--base-padding));
   $height:  var(--input-height);
   $heightP: calc(var(--input-height) - var(--base-padding));
   $basePadding: var(--base-padding);
-  $padding:  calc(var(--base-padding-xs) /2);
+  $padding:  calc(var(--base-padding-xs) /2 + 1px);
 
   $textColor: var(--text-color);
   $primary: var(--primary);
@@ -36,16 +37,16 @@
 		cursor: pointer;
 		position: relative;
 		@include rect( $width,  $height,  $height);
-		border: solid $padding  $textColor;
+		//border: solid $padding  $textColor;
 		background-color:  $bgColor;
-		@include duration;
+		@include shadowHover;
 
 		&::after {
 			content: ' ';
 			@include absolute('lt', $padding, $padding);
 			background-color: $textColor;
 			@include square($heightP, $heightP);
-			@include tranzition
+			@include tranzition;
 		}
 	}
 
@@ -55,7 +56,7 @@
 		&:checked + .toggle {
 			background-color: var(--success);
 			&::after {
-				transform: translateX(#{calc($heightP * .8)});
+				transform: translateX(#{calc($heightP * 1)});
 			  background-color: $bgColor;
 			}
 		}

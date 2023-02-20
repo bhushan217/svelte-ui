@@ -1,5 +1,14 @@
 @use "sass:color";
 $primary: #3762bd;
+$accent: #ca7e19;
+$tertiary: #56a7f3;
+
+$success: #12853e;
+$warn: #a89212;
+$danger: #bd2b17ea;
+$info: #2386e2;
+
+$disabled: #8b8b8b;
 
 $clrTextDark: #bdbdbd;
 $clrBgDark: #121212;
@@ -7,54 +16,59 @@ $clrBgDark: #121212;
 $clrTextLight: #363636;
 $clrBgLight: #f0f0f0;
 
+@mixin darkMode (){
+  --text-color: #{$clrTextDark};
+  --text2-color: #{color.scale($clrTextDark, $lightness: 15%)};
+  --bg-color: #{$clrBgDark};
+  --bg2-color: #{color.scale($clrBgDark, $lightness: 5%)};
+  --input-bg: #{color.scale($clrBgDark, $lightness: 3%)};
+  --border-color: #{color.scale($clrBgDark, $lightness: -3%)};
+  --shadow-color: #{color.scale($clrBgDark, $lightness: -20%)};
+}
 
+@mixin lightMode (){
+  --text-color: #{$clrTextLight};
+  --text2-color: #{color.scale($clrTextLight, $lightness: 5%)};
+  --bg-color: #{$clrBgLight};
+  --bg2-color: #{color.scale($clrBgLight, $lightness: 5%)};
+  --input-bg: #{color.scale($clrBgLight, $lightness: -3%)};
+  --border-color: #{color.scale($clrBgLight, $lightness: -10%)};
+  --shadow-color: #{color.scale($clrBgLight, $lightness: -20%)};
+}
 
 :root {
   color-scheme: light dark;
 
   --primary: #{$primary};
   --primary2: #{color.scale($clrBgDark, $lightness: 5%)};
-  --accent: #ca7e19;
-  --tertiary: #56a7f3;
+  --accent: #{$accent};
+  --tertiary: #{$tertiary};
 
-  --success: #139645;
-  --warn: #d5b500;
-  --danger: #bd2b17ea;
+  --success: #{$success};
+  --warn: #{$warn};
+  --danger: #{$danger};
+  --info: #{$info};
 
-  --disabled-color: #8b8b8b;
+  --disabled-color: #{$disabled};
   --blur-bg: rgba($primary, .1);
 
-  --text-color: #{$clrTextDark};
-  --text2-color: #{color.scale($clrTextDark, $lightness: 15%)};
-  --bg-color: #{$clrBgDark};
-  --bg2-color: #{color.scale($clrBgDark, $lightness: 5%)};
-  --border-color: #{color.scale($clrBgDark, $lightness: -3%)};
-  --input-bg: #{color.scale($clrBgDark, $lightness: 3%)};
-  --shadow-color: #{color.scale($clrBgDark, $lightness: -20%)};
-
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text-color: #{$clrTextDark};
-    --text2-color: #{color.scale($clrTextDark, $lightness: 45%)};
-    --bg-color: #{$clrBgDark};
-    --bg2-color: #{color.scale($clrBgDark, $lightness: 5%)};
-    --border-color: #{color.scale($clrBgDark, $lightness: -3%)};
-    --input-bg: #{color.scale($clrBgDark, $lightness: 3%)};
-    --shadow-color: #{color.scale($clrBgDark, $lightness: -20%)};
+:root.dark{
+  @include darkMode();
+}
 
-    --warn: #a89212;
-  }
+:root.light{
+  @include lightMode();
 }
-@media (prefers-color-scheme: light ) {
-  :root {
-    --text-color: #{$clrTextLight};
-    --text2-color: #{color.scale($clrTextLight, $lightness: 5%)};
-    --bg-color: #{$clrBgLight};
-    --bg2-color: #{color.scale($clrBgLight, $lightness: 5%)};
-    --input-bg: #{color.scale($clrBgLight, $lightness: 3%)};
-    --border-color: #{color.scale($clrBgLight, $lightness: -10%)};
-    --shadow-color: #{color.scale($clrBgLight, $lightness: -20%)};
-  }
-}
+
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     @include darkMode();
+//   }
+// }
+// @media (prefers-color-scheme: light ) {
+//   :root {
+//     @include lightMode();
+//   }
+// }

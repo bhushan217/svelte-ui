@@ -1,16 +1,23 @@
-*, *::before, *::after {
+:global(*, *::before, *::after) {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-*:focus {
+:global(*:focus) {
   outline: none!important;
+}
+:global(*:disabled){
+  cursor: not-allowed !important;
+  // background: repeating-linear-gradient(45deg, transparent, transparent 1rem, var(--disabled-color) 1rem, var(--disabled-color) 2rem)
+  //   , linear-gradient(to bottom, var(--bg2-color), var(--disabled-color)) !important;
+  color: var(--bg-color) !important;
+  background-color: var(--disabled-color) !important;
 }
 ul {
   list-style: none;
 }
 
-a {
+a, a:focus, a:visited, a:active {
   text-decoration: none;
   display: inline-block;
   color: var(--primary);

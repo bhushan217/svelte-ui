@@ -1,7 +1,7 @@
 @use './mixins' as *;
 
 .blurred {
-  background: var(--bg-color, #343434);
+  background: var(--bg-color);
 }
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .blurred {
@@ -14,9 +14,22 @@
 }
 
 
+@mixin shadowHover{
+  box-shadow: 0 2px .25rem var(--shadow-color);
+}
+@mixin shadowActive {
+  box-shadow: 0 2px 0.5rem var(--shadow-color);
+}
+
+@mixin svgIcon($view) {
+  background-image: url("./assets/images/multi-set.svg#" + $view);
+}
+
 .shadow:hover{
   box-shadow: 1px 0px .5rem var(--text2-color);
 }
+
+
 
 .bg-primary{
   background-color: var(--primary) !important;
@@ -48,3 +61,34 @@
   margin-right: auto!important;
 }
 
+
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-.125rem, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(.25rem, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(.5rem, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(.25rem, 0, 0);
+  }
+}
+
+@keyframes glowing {
+  10%, 50%, 90% {
+    box-shadow: 0 0 .065rem .125rem var(--text2-color);
+  }
+  
+
+  30%, 70% {
+    box-shadow: 0 0 .125rem .065rem var(--success);
+  }
+}

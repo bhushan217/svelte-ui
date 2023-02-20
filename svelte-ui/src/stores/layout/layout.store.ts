@@ -7,6 +7,25 @@ export interface LayoutState {
   routes: Array<Nav>;
   currentNav?: Nav;
 }
+
+export const toggleDarkMode = () => {
+  const classList = document.documentElement.classList;
+  console.log({classList})
+  if (classList.contains("light")) {
+    classList.remove("light")
+    classList.add("dark")
+  } else if (classList.contains("dark")) {
+    classList.remove("dark")
+    classList.add("light")
+  } else {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      classList.add("light")
+    } else {
+      classList.add("dark")
+    }
+  }
+}
+
 const locationHashChanged = (event) => {  
   console.trace("locationHashChanged location: " + document.location + ", state: " + JSON.stringify(event));
 }
@@ -22,6 +41,8 @@ const onpopstate = (event: PopStateEvent) => {
 }
 
 export const onWindowLoad = () => {
+  console.log('onWindowLoad called')
+  toggleDarkMode();
   const nextUrl = window.location.href
   const newPath = nextUrl.toString().substring(BASE_PATH.length)
   layoutStore.setRouteActive(newPath)
