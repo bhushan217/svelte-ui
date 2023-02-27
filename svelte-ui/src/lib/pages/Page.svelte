@@ -4,6 +4,7 @@
 	let creditCard = '';
 
   import TreeView from '../components/TreeView.svelte'
+	import Toggle from '../fields/Toggle.svelte';
 
   const tree = {
     isRoot: true,
@@ -63,6 +64,9 @@
     CC = {creditCard}
   </div>
 </div>
+<div class="form-group">  
+  <Toggle label="Agree" disabled={true}/>
+</div>
 
 
 <div class="form-group"> 
@@ -70,12 +74,18 @@
 </div>
 
 <style lang="scss">
+	@use '../../styles/index.scss' as *;
   .form-group{
     margin-top: 1rem;
     border-bottom: solid 1px var(--shadow-color);
-    @extend .shadow !optional;
+    &:active, &:focus, &:hover{
+      @extend .shadow ;
+    }
     .description{
       font-size: .7em;
+    }
+    :global(+ input.error){
+      color: var(--danger)
     }
   }
 </style>

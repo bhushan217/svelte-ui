@@ -23,10 +23,12 @@
 
 @mixin svgIcon($view) {
   background-image: url("./assets/images/multi-set.svg#" + $view);
+  //  -webkit-mask-image: url("./assets/images/multi-set.svg#" + $view) no-repeat 50% 50%;
+  //  mask-image: url("./assets/images/multi-set.svg#" + $view) no-repeat 50% 50%;
 }
 
 .shadow:hover{
-  box-shadow: 1px 0px .5rem var(--text2-color);
+  box-shadow: 1px 0px .5rem var(--shadow-color);
 }
 
 

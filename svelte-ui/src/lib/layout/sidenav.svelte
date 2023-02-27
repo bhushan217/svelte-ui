@@ -93,7 +93,7 @@
 			padding: 0 0.5rem;
 		}
 		.theme-switcher{
-			@include absolute('rt', var(--input-height), calc(var(--base-height) * -1));			
+			@include absolute('rt', var(--input-height), var(--base-height));			
 		}
 		.search-box {
 			//padding: 0 var(--base-height);

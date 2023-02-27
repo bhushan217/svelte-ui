@@ -127,6 +127,7 @@
   }
  </script>
  
- <input autocomplete="off" {id} bind:this={textbox} type="text" maxLength={mask.length} on:input={handleInput}
-  placeholder={mask} value={value} {required} {disabled} {cssClass}
+ <input autocomplete="off" {id} bind:this={textbox} type="text"
+  maxLength={mask.length} on:input={handleInput}
+  placeholder={mask} value={value} {required} {disabled} validity={cssClass}
   class="form-control {cssClass}"/>

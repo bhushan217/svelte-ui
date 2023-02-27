@@ -122,11 +122,14 @@ textarea.error{
 
   }
   &:has(.form-control.error):before{
+    border-radius: 50%;
+    // background-color: var(--danger) !important;
     @include svgIcon('warning-view');
     animation: shake 2s cubic-bezier(.36,.07,.19,.97) both;  
   }
   &:has(.form-control.valid):before{
     border-radius: 50%;
+    // background-color: var(--success) !important;
     @include svgIcon('circle-tick-view');
     animation: glowing 2s cubic-bezier(.36,.07,.19,.97) both; 
   }

@@ -23,7 +23,7 @@ $clrBgLight: #f0f0f0;
   --bg2-color: #{color.scale($clrBgDark, $lightness: 5%)};
   --input-bg: #{color.scale($clrBgDark, $lightness: 3%)};
   --border-color: #{color.scale($clrBgDark, $lightness: -3%)};
-  --shadow-color: #{color.scale($clrBgDark, $lightness: -20%)};
+  --shadow-color: #{color.scale($clrBgDark, $lightness: 10%)};
 }
 
 @mixin lightMode (){
@@ -33,7 +33,7 @@ $clrBgLight: #f0f0f0;
   --bg2-color: #{color.scale($clrBgLight, $lightness: 5%)};
   --input-bg: #{color.scale($clrBgLight, $lightness: -3%)};
   --border-color: #{color.scale($clrBgLight, $lightness: -10%)};
-  --shadow-color: #{color.scale($clrBgLight, $lightness: -20%)};
+  --shadow-color: #{color.scale($clrBgLight, $lightness: -10%)};
 }
 
 :root {
