@@ -1,17 +1,18 @@
 <svg stroke-linejoin="round" stroke-linecap="round"
 xmlns="http://www.w3.org/2000/svg" 
-xmlns:xlink="http://www.w3.org/1999/xlink">
+xmlns:xlink="http://www.w3.org/1999/xlink" stroke-width="1">
 
 <view id="circle-tick-view" viewBox="0 0 24 24" />
 <symbol id="circle-tick" viewBox="0 0 16 16">
-  <circle cx="8" cy="8" r="8" fill="#4CAF50" />
-  <path d="M3 9 7 13 13 5" fill="#4CAF50" stroke-linejoin="round" stroke-linecap="round" stroke="#F8F8F8" stroke-width="3"/>
+  <circle cx="8" cy="8" r="8" fill="#12853e" class="success"/>
+  <path d="M3 9 7 13 13 5" fill="#12853e" class="success-text" stroke="#F8F8F8" stroke-width="1" />
 </symbol>
 <use xlink:href="#circle-tick" width="24" height="24" x="0" y="0" id="id-circle-tick"></use>
 
 <view id="warning-view" viewBox="0 24 24 24" />
 <symbol id="warning" viewBox="0 0 16 16">
-  <path fill="none" stroke="#bd2b17ea" d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 5zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+  <polygon points="8,1 0.5,15 15.5,15" fill="none" stroke="#bd2b17" />
+  <text x="5.35" y="14" fill="#bd2b17">!</text>
 </symbol>  
 <use xlink:href="#warning" width="24" height="24" x="0" y="24" id="id-warning"></use>
 
