@@ -4,9 +4,10 @@
 <script lang="ts">
 	import {createEventDispatcher, onMount} from 'svelte'
 	export let label = '';
+	export let key = '';
   export let checked = false;
   export let disabled = false;
-	let value = '';
+	export let value = checked;
 	let id = ++mid;
 
 	onMount(()=>{
@@ -20,16 +21,16 @@
 	} 
 	const toggleCheck = () => {
 		checked = !checked
+		value = checked
 		dispatcher('checked',checked)
 	}
 </script>
 
-<label class="form-label" data-testid="toggle-compnent" for="toggle-input-{id}">
-	{label}
-</label>
+<label class="form-label" data-testid="toggle-compnent"
+ for="toggle-input-{id}">{label}</label>
 <div class="form-control" >
-	<input id="toggle-input-{id}" bind:this={cb} class="field-input"
-	 {checked} type="checkbox" {disabled} value="Y" on:change={onChange}/>
+	<input name={key} id="toggle-input-{id}" bind:this={cb} class="field-input"
+	 {checked} type="checkbox" {disabled} {value} on:change={onChange}/>
 	<div class="toggle" class:disabled on:click={toggleCheck} on:keypress={toggleCheck}/>
 </div>
 

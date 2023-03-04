@@ -9,21 +9,24 @@
 :global(*:disabled),
 :global(.disabled){
   pointer-events: none;
-  cursor: not-allowed !important;
   color: var(--bg-color) !important;
-  background-color: var(--disabled-color) !important;
-  & > * {
-    cursor: not-allowed !important;
-  }
+  // background-color: var(--disabled-color) !important;
+  background: repeating-linear-gradient(45deg, var(--bg-color), var(--bg-color) 5px, var(--bg2-color) 5px, var(--input-bg) 10px);
+ 
+}
+:global(* :has(> *:disabled)),
+:global(* :has(> .disabled)){
+  cursor: not-allowed !important;
 }
 ul {
   list-style: none;
 }
 
-a, a:focus, a:visited, a:active {
+a, a:focus, a:visited, a:active, .link {
   text-decoration: none;
   display: inline-block;
   color: var(--primary);
+  cursor: alias;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -52,10 +52,10 @@ body {
   vertical-align: middle;
 }
 .btn-round{
-  border-radius: 2rem;
+  border-radius: 2rem !important;
 }
 .btn-circle{
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
 .btn-primary{
   border: solid 1px var(--primary) !important;
@@ -66,9 +66,18 @@ body {
   background-color: var(--bg-color) !important;
   color: var(--text-color)
 }
+.items-center {
+  align-items: center;
+}
+.flex{
+  display: flex;
+  .grow{
+    flex-grow: 1;
+  }
+}
 
 /// INPUT
-input, input[type="text"]{
+input, input[type="text"], textarea{
   background-color: var(--input-bg);
   color: var(--text-color);
   padding: 0 var(--base-height);
@@ -98,7 +107,18 @@ textarea.error{
   display: block;
 }
 .form-group{
+  margin-top: 1rem;
+  border-bottom: solid 1px var(--shadow-color);
   position: relative;
+  & + input.error{
+    color: var(--danger)
+  }
+  &:active, &:focus, &:hover{
+    @extend .shadow ;
+  }
+  .description{
+    font-size: .7em;
+  }
   .form-control{
     &.error{
       border-left-color: var(--danger) !important;
@@ -133,4 +153,17 @@ textarea.error{
     @include svgIcon('circle-tick-view');
     animation: glowing 2s cubic-bezier(.36,.07,.19,.97) both; 
   }
+}
+
+.logo-facebook{
+  @include svgIcon('facebook-view');
+}
+.logo-twitter{
+  @include svgIcon('twitter-view');
+}
+.logo-linkedin{
+  @include svgIcon('linkedin-view');
+}
+.logo-github{
+  @include svgIcon('github-view');
 }
