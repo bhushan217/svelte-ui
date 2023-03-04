@@ -2,19 +2,58 @@
 xmlns="http://www.w3.org/2000/svg" 
 xmlns:xlink="http://www.w3.org/1999/xlink" stroke-width="1">
 
-<view id="circle-tick-view" viewBox="0 0 24 24" />
+<view id="circle-tick-view" viewBox="0 0 16 16" />
 <symbol id="circle-tick" viewBox="0 0 16 16">
-  <circle cx="8" cy="8" r="8" fill="#12853e" class="success"/>
+  <circle cx="8" cy="8" r="7" fill="#12853e" class="success"/>
   <path d="M3 9 7 13 13 5" fill="#12853e" class="success-text" stroke="#F8F8F8" stroke-width="1" />
 </symbol>
-<use xlink:href="#circle-tick" width="24" height="24" x="0" y="0" id="id-circle-tick"></use>
+<use xlink:href="#circle-tick" x="0" y="0" width="16" height="16" id="id-circle-tick"></use>
 
-<view id="warning-view" viewBox="0 24 24 24" />
-<symbol id="warning" viewBox="0 0 16 16">
-  <polygon points="8,1 0.5,15 15.5,15" fill="none" stroke="#bd2b17" />
-  <text x="5.35" y="14" fill="#bd2b17">!</text>
+<view id="warning2-view" viewBox="16 0 16 16" />
+<symbol id="warning2" viewBox="0 0 16 16">
+  <polygon points="8,1 1,14 15,14" fill="none" stroke="#bd2b17" />
+  <text x="6" y="13" fill="#bd2b17" font-size=".7em">!</text>
 </symbol>  
-<use xlink:href="#warning" width="24" height="24" x="0" y="24" id="id-warning"></use>
+<use xlink:href="#warning2" x="16" y="0" width="16" height="16" id="id-warning2"></use>
+
+<view id="warning-view" viewBox="32 0 16 16" />
+<symbol id="warning" viewBox="0 0 16 16">
+  <circle cx="8" cy="8" r="8" fill="#bd2b17" class="danger"/>
+  <line x1="8" y1="3" x2="8" y2="10" stroke="#d7b0b7"/>
+  <line x1="8" y1="13" x2="8" y2="13" stroke="#d7b0b7"/>
+</symbol>  
+<use xlink:href="#warning" x="32" y="0" width="16" height="16" id="id-warning"></use>
+
+<view id="rupee-view" viewBox="48 0 16 16" />
+<symbol id="rupee" viewBox="0 0 16 16" stroke-width="2">
+  <path d="M 12 1 L 1 1 C 14 1 8 10 1 7 C 1 7 11 14 11 14" stroke="#333" fill="none"/>
+  <line x1="1" y1="4" x2="12" y2="4" stroke="#333"/>
+</symbol>
+<use xlink:href="#rupee" x="48" y="0" width="16" height="16" id="id-rupee"></use>
+
+<view id="facebook-view" viewBox="64 0 16 16" />
+<symbol id="facebook" viewBox="0 0 32 32" stroke-width="2" fill="#4267B2"> 
+  <path fill-rule="evenodd" d="M17.12 0.224v4.704h-2.784q-1.536 0-2.080 0.64t-0.544 1.92v3.392h5.248l-0.704 5.28h-4.544v13.568h-5.472v-13.568h-4.544v-5.28h4.544v-3.904q0-3.328 1.856-5.152t4.96-1.824q2.624 0 4.064 0.224z"></path>
+</symbol>
+<use xlink:href="#facebook" x="64" y="0" width="16" height="16" id="id-facebook"></use>
+
+<view id="twitter-view" viewBox="80 0 16 16" />
+<symbol id="twitter" viewBox="0 0 32 32" stroke-width="2" fill="#1DA1F2">
+  <path fill-rule="evenodd" d="M28.928 7.296q-1.184 1.728-2.88 2.976 0 0.256 0 0.736 0 2.336-0.672 4.64t-2.048 4.448-3.296 3.744-4.608 2.624-5.792 0.96q-4.832 0-8.832-2.592 0.608 0.064 1.376 0.064 4.032 0 7.168-2.464-1.888-0.032-3.36-1.152t-2.048-2.848q0.608 0.096 1.088 0.096 0.768 0 1.536-0.192-2.016-0.416-3.328-1.984t-1.312-3.68v-0.064q1.216 0.672 2.624 0.736-1.184-0.8-1.888-2.048t-0.704-2.752q0-1.568 0.8-2.912 2.176 2.656 5.248 4.256t6.656 1.76q-0.16-0.672-0.16-1.312 0-2.4 1.696-4.064t4.064-1.696q2.528 0 4.224 1.824 1.952-0.384 3.68-1.408-0.672 2.048-2.56 3.2 1.664-0.192 3.328-0.896z"></path>
+</symbol>
+<use xlink:href="#twitter" x="80" y="0" width="16" height="16" id="id-twitter"></use>
+
+<view id="github-view" viewBox="96 0 16 16" />
+<symbol id="github" viewBox="0 0 16 16" stroke-width="2" fill="#333">
+  <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+</symbol>
+<use xlink:href="#github" x="96" y="0" width="16" height="16" id="id-github"></use>
+
+<view id="linkedin-view" viewBox="112 0 16 16" />
+<symbol id="linkedin" viewBox="0 0 24 24" stroke-width="2" fill="#0a66c2">
+  <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+</symbol>
+<use xlink:href="#linkedin" x="112" y="0" width="16" height="16" id="id-linkedin"></use>
 
   <symbol id="home" viewBox="0 0 16 16">
     <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"></path>
