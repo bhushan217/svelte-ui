@@ -24,11 +24,12 @@
   onMount(() => {
   });
   $: filteredData = (section) ? formData.filter((a) => a["section"] === section) : formData
+  $: filteredSchema = (section) ? schema.filter((a) => a["section"] === section) : Object.entries(schema).filter(([key,val]) => !val['isRef'])
 </script>
 
 <div class="{layout} card">
-  {#each Object.entries(filteredData) as [key,value]}
-    <B2kSchemaField {schema} {update} {key} {value} {config}/>
+  {#each filteredSchema as [key,fieldSchema], index}
+    <B2kSchemaField schema={fieldSchema} mainSchema={schema} {update} {key} value={formData[key]} {config}/>
   {:else}
     No Data
   {/each}

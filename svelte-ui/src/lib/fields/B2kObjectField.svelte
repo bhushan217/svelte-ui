@@ -6,6 +6,7 @@
   export let update;
   export let layout;
   export let schema;
+  export let mainSchema;
   const add = () => {
     temp_value = [...temp_value,""];
   }
@@ -27,7 +28,7 @@
   {#each Object.entries(temp_value) as [key, value], index}
   <div class="flex items-center">
     <div class="grow">
-      <B2kSchemaField {schema} update={(key,value) => update_object(key,value)} {key} {value}/>
+      <B2kSchemaField {schema} {mainSchema} update={(key,value) => update_object(key,value)} {key} {value}/>
     </div>
   </div>
   {:else}

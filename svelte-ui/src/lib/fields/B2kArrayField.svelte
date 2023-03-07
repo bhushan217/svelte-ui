@@ -5,6 +5,7 @@
   export let key;
   export let update;
   export let schema;
+  export let mainSchema;
   $: temp_value = value;
   const add = () => {
     temp_value = [...temp_value,""];
@@ -24,7 +25,7 @@
   {#each temp_value as val, index}
   <div class="flex items-center">
     <div class="grow">
-      <B2kSchemaField {schema} update={(k,v) => update_array(k,v,index)} value={val}/>      
+      <B2kSchemaField {schema} {mainSchema} update={(k,v) => update_array(k,v,index)} value={val}/>      
     </div>
     <B2kButton variant="danger" on:click={() => remove(index)} classes="mt-1 btn-circle">X</B2kButton>
   </div>

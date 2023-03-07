@@ -5,7 +5,7 @@
 	import { layoutStore } from '../../stores/layout/layout.store';
 	import Pnf404 from './pnf404.svelte';
 	import Toggle from '../fields/Toggle.svelte';
-	import Counter from '../Counter.svelte';
+	import FormBuilder from '../pages/FormBuilder.svelte';
 	import type { Nav } from '../../stores/models/nav.interface';
 	import Todos from '../pages/Todos.svelte';
 	import Page from '../pages/Page.svelte';
@@ -20,9 +20,9 @@
 			order: -1
     },
     {
-      path: 'counter',
-      title: 'Counter',
-      component: Counter,
+      path: 'formBuilder',
+      title: 'FormBuilder',
+      component: FormBuilder,
       types: ['top','side'],
 			order: 1
     },

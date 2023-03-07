@@ -5,8 +5,16 @@
   export let key;
   export let update;
   export let schema;
+  export let mainSchema;
+  $: schemaRefs = schema.schemaRefs;
   const add = () => {
-    temp_value = [...temp_value,{trait_type: "", value: ""}];
+    const newVal = {}
+    schemaRefs.forEach(element => {
+      newVal[element] = null;
+    });
+    //temp_value.push(newVal);
+    console.log({action: 'add', temp_value, newVal, value})
+    temp_value = [...temp_value, newVal]
   }
   const remove = (index) => {
     temp_value.splice(index,1);
@@ -16,16 +24,17 @@
     temp_value[i][k] = v;
     update(key,temp_value);
   }
-  $: temp_value = value;
+  $: temp_value = value || [];
+  console.log({key,value,temp_value})
 </script>
 
 <div class="object_array">
-  {#each temp_value as value, index}
+  {#each temp_value as tempVal, index}
   <div class="flex">
-    <div class="grow flex justify-stretch items-center">
-      {#each Object.entries(value) as [k,v]}
+    <div class="grow flex justify-stretch">
+      {#each Object.entries(tempVal) as [k,val], ind}
       <div class="grow mr-2">
-        <B2kSchemaField {schema} update={(k,v) => update_object(k,v,index)} key={k} value={v}/>
+        <B2kSchemaField schema = {mainSchema[k]} {mainSchema} update={(k,val) => update_object(k,val,index)} key={k} value={val}/>
       </div>
       {/each}
     </div>
